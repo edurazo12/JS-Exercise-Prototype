@@ -43,6 +43,30 @@ function Airplane(name) {
     
   }
  
+
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  
+    
+  }
+  
+  Person.prototype.eat = function(food){
+    return this.stomach.push(food)
+  }
+  
+  // .prototype allows us to add additional pieces of data to 
+  Person.prototype.poop = function(){
+    return this.stomach = [];
+  }
+  Person.prototype.toString = function(){
+    return `${this.name} and ${this.age}`
+  }
+  
+  // toString allows us to convert a number piece of data so we can call it in a string format
+  
+  let Esteban = new Person("Esteban", 20);
  
 
   
@@ -66,6 +90,26 @@ function Airplane(name) {
  function Car() {
     
   }
+ 
+  function Car(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+
+   }
+
+
+   Car.prototype.fill = function(gallons){
+     return this.tank = this.tank + gallons;
+   }
+   Car.prototype.drive = function(distance){
+     this.odometer= this.odometer +1;
+     this.tank = this.tank - 1;
+   }
+
+   const mclaren = new Car("P1", "17");
+
   
   
   /*
@@ -78,15 +122,31 @@ function Airplane(name) {
  function Baby() {
    
   }
+
+  function Baby(name,age,favoriteToy) {
+    Person.call(this, favoriteToy);
+    this.favoriteToy = favoriteToy;
+    this.age= age;
+    this.name = name;
+    
+    }
+
+  Baby.prototype = Object.create(Person.prototype)
+  
+  Baby.prototype.play = function(){
+    return `Playing with ${this.favoriteToy}`
+
+    
+    }
  
   
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Window Binding: this refers to global scope, or if no object is delcared
+    2. Implicit Binding: this refers to a declared object
+    3. "New" Binding: the 'new' operator is used with constructors/classes
+    4. "Explicit Binding" this binding refers to explicityly mentioning what object is being used.
   */
   
   
